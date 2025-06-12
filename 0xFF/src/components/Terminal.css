@@ -1,0 +1,250 @@
+.terminal {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 98%;
+  max-width: 1600px; /* Increased from 1200px */
+  background: #1a1a1a;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  font-family: 'Courier New', 'Monaco', monospace;
+  z-index: 10;
+  border: 1px solid #333;
+}
+
+.terminal-header {
+  background: #2d2d2d;
+  padding: 12px 16px;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #333;
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+  margin-right: 16px;
+}
+
+.btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.btn.close {
+  background: #ff5f57;
+}
+
+.btn.minimize {
+  background: #ffbd2e;
+}
+
+.btn.maximize {
+  background: #28ca42;
+}
+
+.terminal-title {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.terminal-body {
+  padding: 20px;
+  background: #0c0c0c;
+  border-radius: 0 0 8px 8px;
+  min-height: 250px;
+  position: relative;
+  overflow: hidden; /* Hide overflow for animation */
+}
+
+.terminal-prompt {
+  color: #4CAF50;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.prompt-user {
+  color: #4CAF50;
+}
+
+.prompt-symbol {
+  color: #fff;
+  margin: 0 5px;
+}
+
+.prompt-command {
+  color: #61dafb;
+}
+
+.ascii-display {
+  color: #00ff41;
+  font-size: 12px;
+  line-height: 1.2;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: opacity 0.3s ease-in-out; /* Added fade transition */
+}
+
+.ascii-display.visible {
+  opacity: 1;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.ascii-display.hidden {
+  opacity: 0;
+  animation: fadeOut 0.3s ease-in forwards;
+}
+
+.ascii-display pre {
+  margin: 0;
+  white-space: pre;
+  text-align: center;
+}
+
+.terminal-cursor {
+  color: #00ff41;
+  font-weight: bold;
+  animation: blink 1s infinite;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.terminal-status {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.status-text {
+  color: #4CAF50;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 1600px) {
+  .terminal {
+    width: 98%;
+    max-width: 1400px; /* Scale down proportionally */
+  }
+}
+
+@media (max-width: 1400px) {
+  .terminal {
+    width: 98%;
+    max-width: 1200px; /* Further scale down */
+  }
+}
+
+@media (max-width: 1024px) {
+  .terminal {
+    width: 98%;
+    max-width: 900px; /* Adjusted for better visibility */
+  }
+  
+  .ascii-display {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 768px) {
+  .terminal {
+    width: 98%;
+    top: 5%;
+    max-width: 700px; /* Increased mobile scaling */
+  }
+  
+  .terminal-body {
+    padding: 15px;
+    min-height: 180px;
+  }
+  
+  .ascii-display {
+    font-size: 10px;
+    min-height: 120px;
+  }
+  
+  .terminal-prompt {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .terminal {
+    max-width: none; /* Allow full width on small screens */
+  }
+  
+  .ascii-display {
+    font-size: 8px;
+  }
+  
+  .terminal-body {
+    min-height: 150px;
+  }
+}
+
+@media (max-width: 320px) {
+  .ascii-display {
+    font-size: 6px;
+  }
+  
+  .terminal-body {
+    padding: 10px;
+    min-height: 120px;
+  }
+}
+
+/* Large screen optimizations */
+@media (min-width: 1920px) {
+  .terminal {
+    max-width: 1800px; /* Increased for very large screens */
+  }
+  
+  .ascii-display {
+    font-size: 14px;
+  }
+  
+  .terminal-body {
+    min-height: 300px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .terminal {
+    max-width: 2200px; /* Increased 4K screen support */
+  }
+  
+  .ascii-display {
+    font-size: 16px;
+  }
+}

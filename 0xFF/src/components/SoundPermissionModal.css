@@ -1,0 +1,121 @@
+.sound-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(10px);
+}
+
+.sound-modal {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 20px;
+  padding: 0;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: modalSlideIn 0.5s ease-out;
+}
+
+.sound-modal-header {
+  background: linear-gradient(45deg, #646cff, #61dafb);
+  padding: 20px;
+  border-radius: 20px 20px 0 0;
+  text-align: center;
+}
+
+.sound-modal-header h2 {
+  margin: 0;
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.sound-modal-body {
+  padding: 30px;
+  text-align: center;
+}
+
+.sound-modal-body p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.sound-modal-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.sound-btn {
+  padding: 15px 25px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 180px;
+}
+
+.sound-btn-yes {
+  background: linear-gradient(45deg, #28ca42, #4CAF50);
+  color: white;
+}
+
+.sound-btn-yes:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(40, 202, 66, 0.4);
+}
+
+.sound-btn-no {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.sound-btn-no:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 480px) {
+  .sound-modal-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .sound-btn {
+    width: 100%;
+    max-width: 250px;
+  }
+  
+  .sound-modal-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .sound-modal-body p {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,89 @@
+.audio-player {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.audio-toggle {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.audio-toggle:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+.audio-toggle.playing {
+  animation: pulse 2s infinite;
+}
+
+.audio-toggle.error {
+  background: rgba(255, 0, 0, 0.1);
+  border-color: rgba(255, 0, 0, 0.3);
+  cursor: not-allowed;
+}
+
+.audio-toggle:disabled {
+  opacity: 0.6;
+}
+
+.error-tooltip {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: rgba(255, 0, 0, 0.9);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(100, 108, 255, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(100, 108, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(100, 108, 255, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  .audio-player {
+    top: 15px;
+    right: 15px;
+  }
+  
+  .audio-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .error-tooltip {
+    font-size: 10px;
+    top: 50px;
+  }
+}
