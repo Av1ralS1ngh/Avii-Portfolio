@@ -73,7 +73,7 @@
 }
 
 .sound-btn-yes:hover {
-  transform: translateY(-2px);
+  transform: translateY(-5px) translateX(3px);
   box-shadow: 0 10px 30px rgba(40, 202, 66, 0.4);
 }
 
@@ -86,7 +86,7 @@
 .sound-btn-no:hover {
   background: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.6);
-  transform: translateY(-2px);
+  transform: translateY(-5px) translateX(3px);
 }
 
 @keyframes modalSlideIn {

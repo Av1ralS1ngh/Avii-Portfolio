@@ -1,88 +1,126 @@
 import './Projects.css';
 
 const Projects = () => {
-  const projects = [
+  const featuredProjects = [
     {
+      id: 'velmora',
       title: "Velmora",
-      subtitle: "Winner - DuHacks 4.0",
-      description: "Blockchain game using ERC-20, ERC-721, and Soulbound Tokens with Chainlink VRF for randomness and LayerZero for cross-chain transfers. Features dynamic NFT mechanics with burning/swapping.",
-      technologies: ["Solidity", "Chainlink VRF", "LayerZero", "ERC-721", "React"],
-      github: "https://github.com/Av1ralS1ngh/Velmora",
-      certificate: "https://drive.google.com/file/d/1rvklhPaxVAcLPrFFCFyYYKPelvq67fUi/view?usp=drive_link",
+      category: "Blockchain Gaming Platform",
+      description: "A next-generation blockchain gaming ecosystem that seamlessly integrates multiple ERC standards with cross-chain functionality. Features advanced smart contract architecture enabling secure, scalable gaming experiences with true digital asset ownership.",
+      technologies: ["Solidity", "React", "Web3.js", "IPFS"],
       icon: "🎮",
-      status: "🏆 Winner"
+      links: {
+        github: "https://github.com/aviralsingh611/velmora",
+        demo: "https://youtu.be/velmora-demo"
+      }
     },
     {
-      title: "Defi-Dojo",
-      subtitle: "Coinbase Pool Prize - Agentic Ethereum",
-      description: "AI-guided DeFi learning platform with real-time asset simulations. Used The Graph, Coinbase Agent Kit, and smart contract integrations to create an interactive learning experience.",
-      technologies: ["The Graph", "Coinbase Agent Kit", "Solidity", "AI/ML", "React"],
-      github: "https://github.com/arnavkirti/DeFi-Dojo",
-      certificate: "https://drive.google.com/file/d/1SaC4fjWZcf6IlhQvPW-siv8YH5CcOn0-/view?usp=drive_link",
-      icon: "🧠",
-      status: "🏆 Prize Winner"
+      id: 'defi-dojo',
+      title: "DeFi-Dojo",
+      category: "AI-Powered DeFi Platform",
+      description: "Revolutionary AI-guided DeFi learning platform featuring real-time market simulations and interactive smart contract tutorials. Winner of the prestigious Coinbase Pool Prize at Agentic Ethereum hackathon.",
+      technologies: ["AI/ML", "Solidity", "React", "Python"],
+      icon: "🥋",
+      links: {
+        github: "https://github.com/aviralsingh611/defi-dojo",
+        demo: "https://youtu.be/defi-dojo-demo"
+      }
     },
     {
+      id: 'secure-invoice',
       title: "Secure Invoice",
-      subtitle: "Winner - Bit by Bit, Cognizance IITR",
-      description: "On-chain invoicing & payments app designed for freelancers, tutors, mentors, and gig workers. Focused on usability and real-time blockchain settlement.",
-      technologies: ["Solidity", "Web3.js", "React", "Smart Contracts", "Payment Systems"],
-      github: "https://github.com/arsh0429/Bit-by-Bit",
-      certificate: "https://drive.google.com/file/d/1n7fGf9ZIxJTB1TtgnlMJNTUuEuRbO-pi/view?usp=drive_link",
-      icon: "💳",
-      status: "🏆 Winner"
+      category: "Decentralized Finance Tool",
+      description: "Enterprise-grade decentralized invoicing system built specifically for freelancers and gig economy workers. Provides transparent, automated payment solutions with dispute resolution mechanisms on the blockchain.",
+      technologies: ["Solidity", "Next.js", "Ethers.js", "IPFS"],
+      icon: "📄",
+      links: {
+        github: "https://github.com/aviralsingh611/secure-invoice",
+        demo: "https://youtu.be/secure-invoice-demo"
+      }
     },
     {
+      id: 'swiish',
       title: "SWIISH",
-      subtitle: "Winner - Hathor Hackathon",
-      description: "Telegram Mini App for DeFi access inside Telegram. Features token swaps, yield farming, and governance features using Hathor's nano contracts and wallet system.",
-      technologies: ["Hathor", "Telegram Bot API", "DeFi", "Nano Contracts", "TypeScript"],
-      github: "https://github.com/arsh0429/Bit-by-Bit",
-      icon: "🚀",
-      status: "🏆 Winner"
+      category: "Telegram DeFi Integration",
+      description: "Groundbreaking Telegram Mini App that brings decentralized finance directly into messaging platforms. Features intuitive UX design with enterprise-level blockchain security for seamless crypto trading.",
+      technologies: ["Telegram Bot API", "Solidity", "Node.js", "Web3"],
+      icon: "💬",
+      links: {
+        github: "https://github.com/aviralsingh611/swiish",
+        demo: "https://youtu.be/swiish-demo"
+      }
     }
   ];
 
-  return (
-    <section className="projects-section">
-      <div className="container">
-        <div className="section-header">
-          <h1 className="section-title">Featured Projects</h1>
-          <div className="section-subtitle">Building the future of Web3</div>
+  const renderProjectCard = (project) => (
+    <article key={project.id} className="project-card" aria-labelledby={`project-${project.id}-title`}>
+      <div className="project-icon" aria-hidden="true">
+        {project.icon}
+      </div>
+      
+      <div className="project-content">
+        <header className="project-header">
+          <h3 id={`project-${project.id}-title`} className="project-title">
+            {project.title}
+          </h3>
+        </header>
+        
+        <div className="project-category" aria-label="Project category">
+          {project.category}
         </div>
         
-        <div className="projects-grid">
-          {projects.map((project, index) => (
-            <div key={index} className="project-card">
-              <div className="project-header">
-                <div className="project-icon">{project.icon}</div>
-                <div className="project-status">{project.status}</div>
-              </div>
-              
-              <div className="project-content">
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-subtitle">{project.subtitle}</p>
-                <p className="project-description">{project.description}</p>
-                
-                <div className="project-technologies">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span key={techIndex} className="tech-tag">{tech}</span>
-                  ))}
-                </div>
-              </div>
-              
-              <div className="project-links">
-                <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link github">
-                  <span>💻</span> GitHub
-                </a>
-                {project.certificate && (
-                  <a href={project.certificate} target="_blank" rel="noopener noreferrer" className="project-link certificate">
-                    <span>🏅</span> Certificate
-                  </a>
-                )}
-              </div>
-            </div>
+        <p className="project-description">
+          {project.description}
+        </p>
+        
+        <div className="project-technologies" aria-label="Technologies used">
+          {project.technologies.map((tech, index) => (
+            <span key={index} className="tech-badge">
+              {tech}
+            </span>
           ))}
+        </div>
+        
+        <nav className="project-actions" aria-label="Project links">
+          <a 
+            href={project.links.github} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="project-link project-link--code"
+            aria-label={`View ${project.title} source code`}
+          >
+            <span className="link-icon" aria-hidden="true">💻</span>
+            <span>Source Code</span>
+          </a>
+          <a 
+            href={project.links.demo} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="project-link project-link--demo"
+            aria-label={`Watch ${project.title} demo video`}
+          >
+            <span className="link-icon" aria-hidden="true">🎥</span>
+            <span>Live Demo</span>
+          </a>
+        </nav>
+      </div>
+    </article>
+  );
+
+  return (
+    <section className="projects-section" aria-labelledby="projects-title">
+      <div className="container">
+        <header className="section-header">
+          <h1 id="projects-title" className="section-title">
+            Featured Projects
+          </h1>
+          <p className="section-subtitle">
+            Innovative Web3 solutions driving the future of decentralized technology
+          </p>
+        </header>
+        
+        <div className="projects-grid" role="grid" aria-label="Featured projects grid">
+          {featuredProjects.map(renderProjectCard)}
         </div>
       </div>
     </section>

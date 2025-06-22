@@ -66,10 +66,7 @@ function App() {
                 {!terminalDestroyed && <Terminal />}
                 
                 <div className="hero-spline-bg">
-                  <SplineViewer 
-                    splineUrl="https://prod.spline.design/p3LbqIw4TPUL3IWc/scene.splinecode"
-                    className="hero-spline"
-                  />
+                  <SplineViewer className="hero-spline" />
                 </div>
                 
                 {terminalDestroyed && (

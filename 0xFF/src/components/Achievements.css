@@ -145,16 +145,17 @@
 
 @media (max-width: 768px) {
   .achievements-section {
-    padding: 100px 0 60px;
+    padding: 80px 0 40px;
   }
   
   .achievements-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
+    margin: 0 0.5rem;
   }
   
   .achievement-card {
-    padding: 1.2rem;
+    padding: 1rem;
     flex-direction: column;
     text-align: center;
   }
@@ -166,46 +167,65 @@
   }
   
   .achievement-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
     text-align: center;
   }
   
   .stats-summary {
     grid-template-columns: 1fr;
     gap: 1rem;
+    margin: 0 0.5rem;
+    margin-top: 2rem;
   }
   
   .summary-item {
-    padding: 1.5rem;
+    padding: 1.2rem;
   }
   
   .summary-number {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
+  }
+  
+  .section-title {
+    font-size: clamp(2rem, 8vw, 3rem);
   }
 }
 
 @media (max-width: 480px) {
+  .achievements-section {
+    padding: 60px 0 30px;
+  }
+  
+  .achievements-grid {
+    margin: 0 0.25rem;
+  }
+  
   .achievement-card {
-    padding: 1rem;
+    padding: 0.8rem;
   }
   
   .achievement-icon {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   
   .achievement-title {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   
   .achievement-description {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+  }
+  
+  .achievement-year {
+    font-size: 0.7rem;
+    padding: 0.1rem 0.6rem;
   }
   
   .summary-number {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   
   .summary-label {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 }

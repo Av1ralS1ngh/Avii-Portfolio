@@ -333,48 +333,77 @@
 
 @media (max-width: 768px) {
   .terminal {
-    width: 98%;
-    top: 5%;
-    max-width: 700px;
+    width: 95%;
+    top: 8%;
+    max-width: none;
   }
   
   .terminal-body {
-    padding: 15px;
-    min-height: 180px;
+    padding: 12px;
+    min-height: 150px;
   }
   
   .ascii-display {
-    font-size: 10px;
-    min-height: 120px;
+    font-size: 8px;
+    min-height: 100px;
   }
   
   .terminal-prompt {
+    font-size: 10px;
+  }
+  
+  .terminal-header {
+    padding: 8px 12px;
+  }
+  
+  .terminal-title {
     font-size: 12px;
+  }
+  
+  .btn {
+    width: 10px;
+    height: 10px;
   }
 }
 
 @media (max-width: 480px) {
   .terminal {
-    max-width: none;
+    width: 98%;
+    top: 5%;
   }
   
-  .ascii-display {
-    font-size: 8px;
-  }
-  
-  .terminal-body {
-    min-height: 150px;
-  }
-}
-
-@media (max-width: 320px) {
   .ascii-display {
     font-size: 6px;
   }
   
   .terminal-body {
-    padding: 10px;
+    padding: 8px;
     min-height: 120px;
+  }
+  
+  .terminal-prompt {
+    font-size: 8px;
+  }
+  
+  .debug-info {
+    font-size: 8px;
+    bottom: 2px;
+    right: 8px;
+  }
+}
+
+@media (max-width: 320px) {
+  .terminal {
+    width: 99%;
+  }
+  
+  .ascii-display {
+    font-size: 5px;
+  }
+  
+  .terminal-body {
+    padding: 6px;
+    min-height: 100px;
   }
 }
 

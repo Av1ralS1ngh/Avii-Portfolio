@@ -1,84 +1,60 @@
-import { useEffect, useRef, useState } from 'react';
-import './SplineViewer.css';
+import { Suspense, useState } from 'react';
+import Spline from '@splinetool/react-spline';
 
-const SplineViewer = ({ splineUrl, className = '', style = {} }) => {
-  const canvasRef = useRef(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [hasError, setHasError] = useState(false);
+const SplineViewer = ({ className = "" }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
-  useEffect(() => {
-    if (!splineUrl) {
-      setHasError(true);
-      setIsLoading(false);
-      return;
-    }
+  const handleLoad = () => {
+    setIsLoading(false);
+    console.log('Spline scene loaded successfully');
+  };
 
-    const loadSpline = async () => {
-      try {
-        setIsLoading(true);
-        setHasError(false);
-        
-        // Check if @splinetool/runtime is available
-        const { Application } = await import('@splinetool/runtime');
-        
-        if (canvasRef.current) {
-          const app = new Application(canvasRef.current);
-          
-          // Add error handling for the load
-          app.load(splineUrl)
-            .then(() => {
-              setIsLoaded(true);
-              setIsLoading(false);
-              console.log('Spline scene loaded successfully');
-            })
-            .catch((error) => {
-              console.error('Failed to load Spline scene:', error);
-              setHasError(true);
-              setIsLoading(false);
-            });
-        }
-      } catch (error) {
-        console.error('Failed to import Spline runtime:', error);
-        setHasError(true);
-        setIsLoading(false);
-      }
-    };
+  const handleError = (error) => {
+    setIsLoading(false);
+    setHasError(true);
+    console.error('Spline loading error:', error);
+  };
 
-    // Add a small delay to ensure DOM is ready
-    const timer = setTimeout(loadSpline, 100);
-    return () => clearTimeout(timer);
-  }, [splineUrl]);
+  const LoadingFallback = () => (
+    <div className="spline-placeholder">
+      <div className="placeholder-content">
+        <p>Loading 3D Scene...</p>
+        <div className="loading-spinner">⚡</div>
+        <p className="placeholder-note">Interactive 3D experience loading</p>
+      </div>
+    </div>
+  );
+
+  const ErrorFallback = () => (
+    <div className="spline-placeholder">
+      <div className="placeholder-content">
+        <p>3D Scene Unavailable</p>
+        <div className="loading-spinner">🎨</div>
+        <p className="placeholder-note">Unable to load 3D content</p>
+      </div>
+    </div>
+  );
 
   if (hasError) {
-    return (
-      <div className={`spline-error ${className}`} style={style}>
-        <div className="error-content">
-          <span className="error-icon">⚠️</span>
-          <p>3D Scene Unavailable</p>
-          <small>Check console for details</small>
-        </div>
-      </div>
-    );
+    return <ErrorFallback />;
   }
 
   return (
-    <div className={`spline-container ${className}`} style={style}>
-      {isLoading && (
-        <div className="spline-loader">
-          <div className="loader-spinner"></div>
-          <p>Loading 3D scene...</p>
-        </div>
-      )}
-      <canvas 
-        ref={canvasRef}
-        className={`spline-canvas ${isLoaded ? 'loaded' : ''}`}
-        style={{ 
-          display: isLoading ? 'none' : 'block',
-          width: '100%',
-          height: '100%'
-        }}
-      />
+    <div className={`spline-container ${className}`}>
+      {isLoading && <LoadingFallback />}
+      <Suspense fallback={<LoadingFallback />}>
+        <Spline 
+          scene="https://prod.spline.design/e4y7IGbrhMhdV5eg/scene.splinecode"
+          style={{ 
+            width: '100%', 
+            height: '100%',
+            display: isLoading ? 'none' : 'block'
+          }}
+          onLoad={handleLoad}
+          onError={handleError}
+        />
+      </Suspense>
     </div>
   );
 };

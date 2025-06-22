@@ -41,6 +41,7 @@
 .toggle-icon {
   font-size: 12px;
   line-height: 1;
+  position: relative;
 }
 
 .theme-toggle:hover .toggle-track {

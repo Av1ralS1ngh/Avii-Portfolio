@@ -1,44 +1,63 @@
+import { useState, useEffect } from 'react';
 import './Skills.css';
 
 const Skills = () => {
-  const skillCategories = [
+  const [animatedSkills, setAnimatedSkills] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimatedSkills(true);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const skillsData = [
     {
-      title: "Blockchain Languages",
+      category: "Blockchain & Web3",
       icon: "⛓️",
       skills: [
-        { name: "Solidity", level: 95, color: "#646cff" },
-        { name: "Yul", level: 85, color: "#61dafb" },
-        { name: "Rust", level: 80, color: "#ff6b6b" },
-        { name: "Cairo", level: 75, color: "#4ecdc4" }
+        { name: "Solidity", percentage: 95 },
+        { name: "Yul", percentage: 80 },
+        { name: "Cairo", percentage: 75 },
+        { name: "EVM Development", percentage: 90 },
+        { name: "LayerZero Protocol", percentage: 85 },
+        { name: "Chainlink VRF", percentage: 88 }
       ]
     },
     {
-      title: "Programming Languages",
+      category: "Languages & Frameworks",
       icon: "💻",
       skills: [
-        { name: "TypeScript", level: 90, color: "#3178c6" },
-        { name: "Python", level: 85, color: "#3776ab" },
-        { name: "JavaScript", level: 95, color: "#f7df1e" }
+        { name: "TypeScript", percentage: 90 },
+        { name: "Rust", percentage: 78 },
+        { name: "Python", percentage: 85 },
+        { name: "React", percentage: 92 },
+        { name: "HTML/CSS", percentage: 90 },
+        { name: "RestAPIs", percentage: 88 }
       ]
     },
     {
-      title: "Development Tools",
-      icon: "🛠️",
+      category: "Development Tools",
+      icon: "🔧",
       skills: [
-        { name: "Foundry", level: 95, color: "#646cff" },
-        { name: "Hardhat", level: 90, color: "#61dafb" },
-        { name: "The Graph", level: 80, color: "#6f3ff7" },
-        { name: "Chainlink VRF", level: 85, color: "#375bd2" }
+        { name: "Foundry", percentage: 92 },
+        { name: "Hardhat", percentage: 90 },
+        { name: "The Graph Protocol", percentage: 82 },
+        { name: "Web Sockets", percentage: 80 },
+        { name: "Git/GitHub", percentage: 95 },
+        { name: "Coinbase Agent Kit", percentage: 75 }
       ]
     },
     {
-      title: "Web Technologies",
-      icon: "🌐",
+      category: "Blockchain Standards",
+      icon: "📜",
       skills: [
-        { name: "React", level: 90, color: "#61dafb" },
-        { name: "HTML/CSS", level: 95, color: "#e34c26" },
-        { name: "REST APIs", level: 85, color: "#4caf50" },
-        { name: "WebSockets", level: 80, color: "#ff9800" }
+        { name: "ERC-20 Tokens", percentage: 95 },
+        { name: "ERC-721 NFTs", percentage: 92 },
+        { name: "Soulbound Tokens", percentage: 85 },
+        { name: "Dynamic NFTs", percentage: 88 },
+        { name: "Cross-chain Protocols", percentage: 82 },
+        { name: "Smart Contract Security", percentage: 90 }
       ]
     }
   ];
@@ -47,16 +66,16 @@ const Skills = () => {
     <section className="skills-section">
       <div className="container">
         <div className="section-header">
-          <h1 className="section-title">Technical Skills</h1>
-          <div className="section-subtitle">Technologies I work with</div>
+          <h1 className="section-title">Skills & Expertise</h1>
+          <div className="section-subtitle">Technologies I work with to build amazing experiences</div>
         </div>
         
         <div className="skills-grid">
-          {skillCategories.map((category, index) => (
-            <div key={index} className="skill-category">
+          {skillsData.map((category, categoryIndex) => (
+            <div key={categoryIndex} className="skill-category">
               <div className="category-header">
                 <span className="category-icon">{category.icon}</span>
-                <h3 className="category-title">{category.title}</h3>
+                <h3 className="category-title">{category.category}</h3>
               </div>
               
               <div className="skills-list">
@@ -64,16 +83,15 @@ const Skills = () => {
                   <div key={skillIndex} className="skill-item">
                     <div className="skill-info">
                       <span className="skill-name">{skill.name}</span>
-                      <span className="skill-percentage">{skill.level}%</span>
+                      <span className="skill-percentage">{skill.percentage}%</span>
                     </div>
                     <div className="skill-bar">
                       <div 
                         className="skill-progress"
-                        style={{ 
-                          width: `${skill.level}%`,
-                          backgroundColor: skill.color
+                        style={{
+                          width: animatedSkills ? `${skill.percentage}%` : '0%'
                         }}
-                      ></div>
+                      />
                     </div>
                   </div>
                 ))}
