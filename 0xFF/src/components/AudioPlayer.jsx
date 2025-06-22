@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
 import './AudioPlayer.css';
 
-const AudioPlayer = ({ src, shouldPlay, isActive }) => {
+const AudioPlayer = ({ src, shouldPlay, isActive, onTimeUpdate }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [currentTime, setCurrentTime] = useState(0);
   const audioRef = useRef(null);
 
   useEffect(() => {
@@ -42,6 +43,17 @@ const AudioPlayer = ({ src, shouldPlay, isActive }) => {
     console.warn('Audio file could not be loaded. Please ensure the file exists at:', src);
   };
 
+  const handleTimeUpdate = () => {
+    const audio = audioRef.current;
+    if (audio) {
+      const time = audio.currentTime;
+      setCurrentTime(time);
+      if (onTimeUpdate) {
+        onTimeUpdate(time);
+      }
+    }
+  };
+
   const getButtonContent = () => {
     if (hasError) return '❌';
     if (isLoading) return '⏳';
@@ -65,6 +77,7 @@ const AudioPlayer = ({ src, shouldPlay, isActive }) => {
         preload="auto"
         onLoadedData={handleLoadedData}
         onError={handleError}
+        onTimeUpdate={handleTimeUpdate}
       />
       <button 
         className={`audio-toggle ${isPlaying ? 'playing' : ''} ${hasError ? 'error' : ''}`}

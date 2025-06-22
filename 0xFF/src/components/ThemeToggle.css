@@ -1,0 +1,50 @@
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 80px;
+  z-index: 1001;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.toggle-track {
+  width: 60px;
+  height: 30px;
+  background: var(--toggle-bg);
+  border-radius: 15px;
+  position: relative;
+  transition: all 0.3s ease;
+  border: 2px solid var(--toggle-border);
+}
+
+.toggle-thumb {
+  width: 24px;
+  height: 24px;
+  background: var(--toggle-thumb);
+  border-radius: 50%;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .toggle-thumb {
+  transform: translateX(30px);
+}
+
+.toggle-icon {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.theme-toggle:hover .toggle-track {
+  transform: scale(1.05);
+}
+
+/* Variables will be defined in index.css */

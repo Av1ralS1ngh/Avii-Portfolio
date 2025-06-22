@@ -1,8 +1,9 @@
 .about-section {
   min-height: 100vh;
   padding: 120px 0 80px;
-  background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
-  color: white;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
 }
 
 .section-header {
@@ -14,7 +15,7 @@
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 700;
   margin-bottom: 1rem;
-  background: linear-gradient(45deg, #646cff, #61dafb);
+  background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -23,7 +24,7 @@
 .section-subtitle {
   font-size: 1.2rem;
   opacity: 0.8;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--text-secondary);
 }
 
 .about-content {
@@ -43,14 +44,14 @@
 .about-text h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: #61dafb;
+  color: var(--accent-primary);
 }
 
 .about-text p {
   font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 1.5rem;
-  opacity: 0.9;
+  color: var(--text-secondary);
 }
 
 .about-stats {
@@ -62,10 +63,10 @@
 .stat-item {
   text-align: center;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-secondary);
   border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-primary);
+  box-shadow: var(--shadow-md);
   transition: transform 0.3s ease;
 }
 
@@ -76,7 +77,7 @@
 .stat-number {
   font-size: 2.5rem;
   font-weight: 700;
-  background: linear-gradient(45deg, #646cff, #61dafb);
+  background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -85,7 +86,7 @@
 
 .stat-label {
   font-size: 0.9rem;
-  opacity: 0.8;
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
@@ -96,33 +97,33 @@
 .education-section h3 {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
-  color: #61dafb;
+  color: var(--accent-primary);
 }
 
 .education-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-secondary);
   padding: 2rem;
   border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-primary);
+  box-shadow: var(--shadow-md);
 }
 
 .education-info h4 {
   font-size: 1.4rem;
   margin-bottom: 0.5rem;
-  color: #646cff;
+  color: var(--accent-primary);
 }
 
 .degree {
   font-size: 1.1rem;
-  color: #61dafb;
+  color: var(--accent-secondary);
   margin-bottom: 1rem;
   font-weight: 500;
 }
 
 .education-detail {
   line-height: 1.7;
-  opacity: 0.9;
+  color: var(--text-secondary);
 }
 
 @media (max-width: 768px) {

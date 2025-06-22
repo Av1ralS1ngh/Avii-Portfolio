@@ -4,22 +4,22 @@
   left: 50%;
   transform: translateX(-50%);
   width: 98%;
-  max-width: 1600px; /* Increased from 1200px */
-  background: #1a1a1a;
+  max-width: 1600px;
+  background: var(--bg-secondary);
   border-radius: 8px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-lg);
   font-family: 'Courier New', 'Monaco', monospace;
   z-index: 10;
-  border: 1px solid #333;
+  border: 1px solid var(--border-primary);
 }
 
 .terminal-header {
-  background: #2d2d2d;
+  background: var(--bg-tertiary);
   padding: 12px 16px;
   border-radius: 8px 8px 0 0;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--border-primary);
 }
 
 .terminal-buttons {
@@ -36,35 +36,39 @@
 
 .btn.close {
   background: #ff5f57;
+  box-shadow: 0 0 6px rgba(255, 95, 87, 0.6);
 }
 
 .btn.minimize {
   background: #ffbd2e;
+  box-shadow: 0 0 6px rgba(255, 189, 46, 0.6);
 }
 
 .btn.maximize {
   background: #28ca42;
+  box-shadow: 0 0 6px rgba(40, 202, 66, 0.6);
 }
 
 .terminal-title {
-  color: #fff;
+  color: var(--text-secondary);
   font-size: 14px;
   font-weight: 500;
 }
 
 .terminal-body {
   padding: 20px;
-  background: #0c0c0c;
+  background: var(--bg-primary);
   border-radius: 0 0 8px 8px;
   min-height: 250px;
   position: relative;
-  overflow: hidden; /* Hide overflow for animation */
+  overflow: hidden;
 }
 
 .terminal-prompt {
   color: #4CAF50;
   margin-bottom: 10px;
   font-size: 14px;
+  text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
 }
 
 .prompt-user {
@@ -72,12 +76,12 @@
 }
 
 .prompt-symbol {
-  color: #fff;
+  color: var(--text-primary);
   margin: 0 5px;
 }
 
 .prompt-command {
-  color: #61dafb;
+  color: var(--accent-secondary);
 }
 
 .ascii-display {
@@ -89,87 +93,237 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  transition: opacity 0.3s ease-in-out; /* Added fade transition */
+  transition: opacity 0.05s ease-in-out; /* Super fast transition */
+  text-shadow: 0 0 3px rgba(0, 255, 65, 0.6);
 }
 
 .ascii-display.visible {
   opacity: 1;
-  animation: fadeIn 0.5s ease-out forwards;
+  animation: fadeInGlow 0.05s ease-out forwards;
 }
 
 .ascii-display.hidden {
   opacity: 0;
-  animation: fadeOut 0.3s ease-in forwards;
+  animation: fadeOutGlow 0.05s ease-in forwards;
 }
 
 .ascii-display pre {
   margin: 0;
   white-space: pre;
   text-align: center;
+  filter: drop-shadow(0 0 5px rgba(0, 255, 65, 0.4));
 }
 
 .terminal-cursor {
   color: #00ff41;
   font-weight: bold;
-  animation: blink 1s infinite;
+  animation: greenBlink 1s infinite;
   position: absolute;
   bottom: 20px;
   left: 20px;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.8);
 }
 
-.terminal-status {
+.debug-info {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  bottom: 5px;
+  right: 20px;
+  font-size: 10px;
+  color: var(--accent-secondary);
+  opacity: 0.7;
+  font-family: 'Courier New', monospace;
+  pointer-events: none;
 }
 
-.status-text {
-  color: #4CAF50;
-  font-size: 14px;
-  font-weight: 500;
+/* Destruction Animation Styles */
+.terminal.destroying {
+  animation: terminalDestroy 3s ease-in-out forwards;
 }
 
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+.glitching {
+  animation: glitch 0.3s infinite;
 }
 
-@keyframes fadeIn {
+.glitch-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 0, 0, 0.1) 2px,
+    rgba(255, 0, 0, 0.1) 4px
+  );
+  animation: scanlines 0.1s infinite;
+  pointer-events: none;
+}
+
+.static-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(120, 119, 240, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 119, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(120, 119, 240, 0.3) 0%, transparent 50%);
+  animation: staticNoise 0.15s infinite;
+  pointer-events: none;
+}
+
+.destruction-text {
+  color: #ff0000 !important;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.8) !important;
+  font-weight: bold;
+  animation: errorFlicker 0.2s infinite;
+}
+
+@keyframes greenBlink {
+  0%, 50% { 
+    opacity: 1; 
+    text-shadow: 0 0 15px rgba(0, 255, 65, 1);
+  }
+  51%, 100% { 
+    opacity: 0; 
+  }
+}
+
+@keyframes fadeInGlow {
   from {
     opacity: 0;
+    filter: drop-shadow(0 0 0px rgba(0, 255, 65, 0));
   }
   to {
     opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(0, 255, 65, 0.6));
   }
 }
 
-@keyframes fadeOut {
+@keyframes fadeOutGlow {
   from {
     opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(0, 255, 65, 0.6));
   }
   to {
     opacity: 0;
+    filter: drop-shadow(0 0 0px rgba(0, 255, 65, 0));
+  }
+}
+
+@keyframes terminalDestroy {
+  0% {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+    filter: blur(0px) hue-rotate(0deg);
+  }
+  20% {
+    transform: translateX(-50%) scale(1.02);
+    opacity: 0.9;
+    filter: blur(1px) hue-rotate(90deg);
+  }
+  40% {
+    transform: translateX(-50%) scale(0.98);
+    opacity: 0.7;
+    filter: blur(2px) hue-rotate(180deg);
+  }
+  60% {
+    transform: translateX(-50%) scale(1.05);
+    opacity: 0.5;
+    filter: blur(4px) hue-rotate(270deg);
+  }
+  80% {
+    transform: translateX(-50%) scale(0.95);
+    opacity: 0.3;
+    filter: blur(8px) hue-rotate(360deg);
+  }
+  90% {
+    transform: translateX(-50%) scale(0.1);
+    opacity: 0.1;
+    filter: blur(20px);
+  }
+  100% {
+    transform: translateX(-50%) scale(0);
+    opacity: 0;
+    filter: blur(50px);
+  }
+}
+
+@keyframes glitch {
+  0%, 100% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+    filter: hue-rotate(90deg);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+    filter: hue-rotate(180deg);
+  }
+  60% {
+    transform: translate(2px, 2px);
+    filter: hue-rotate(270deg);
+  }
+  80% {
+    transform: translate(2px, -2px);
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes scanlines {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes staticNoise {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.01);
+  }
+}
+
+@keyframes errorFlicker {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+  }
+  50% {
+    opacity: 0.7;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 1), 0 0 30px rgba(255, 255, 255, 0.5);
   }
 }
 
 @media (max-width: 1600px) {
   .terminal {
     width: 98%;
-    max-width: 1400px; /* Scale down proportionally */
+    max-width: 1400px;
   }
 }
 
 @media (max-width: 1400px) {
   .terminal {
     width: 98%;
-    max-width: 1200px; /* Further scale down */
+    max-width: 1200px;
   }
 }
 
 @media (max-width: 1024px) {
   .terminal {
     width: 98%;
-    max-width: 900px; /* Adjusted for better visibility */
+    max-width: 900px;
   }
   
   .ascii-display {
@@ -181,7 +335,7 @@
   .terminal {
     width: 98%;
     top: 5%;
-    max-width: 700px; /* Increased mobile scaling */
+    max-width: 700px;
   }
   
   .terminal-body {
@@ -201,7 +355,7 @@
 
 @media (max-width: 480px) {
   .terminal {
-    max-width: none; /* Allow full width on small screens */
+    max-width: none;
   }
   
   .ascii-display {
@@ -224,10 +378,9 @@
   }
 }
 
-/* Large screen optimizations */
 @media (min-width: 1920px) {
   .terminal {
-    max-width: 1800px; /* Increased for very large screens */
+    max-width: 1800px;
   }
   
   .ascii-display {
@@ -241,7 +394,7 @@
 
 @media (min-width: 2560px) {
   .terminal {
-    max-width: 2200px; /* Increased 4K screen support */
+    max-width: 2200px;
   }
   
   .ascii-display {

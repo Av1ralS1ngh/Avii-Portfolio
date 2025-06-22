@@ -3,11 +3,16 @@
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(12, 12, 12, 0.95);
+  background: rgba(8, 51, 68, 0.95);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-primary);
   z-index: 100;
   padding: 1rem 0;
+  transition: all 0.3s ease;
+}
+
+[data-theme="light"] .main-navigation {
+  background: rgba(224, 242, 254, 0.95);
 }
 
 .nav-container {
@@ -22,7 +27,7 @@
 .nav-brand {
   font-size: 1.5rem;
   font-weight: 700;
-  background: linear-gradient(45deg, #646cff, #61dafb);
+  background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -39,22 +44,22 @@
   gap: 0.5rem;
   padding: 0.75rem 1rem;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-primary);
   border-radius: 25px;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary);
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 0.9rem;
 }
 
 .nav-item:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.3);
-  color: white;
+  background: var(--bg-tertiary);
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
 }
 
 .nav-item.active {
-  background: linear-gradient(45deg, #646cff, #61dafb);
+  background: var(--gradient-primary);
   border-color: transparent;
   color: white;
 }

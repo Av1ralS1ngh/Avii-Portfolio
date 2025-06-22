@@ -48,8 +48,9 @@
 
 .portfolio {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
-  color: white;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
 }
 
 .hero {
@@ -59,21 +60,76 @@
   justify-content: center;
   text-align: center;
   position: relative;
-  background: radial-gradient(circle at center, rgba(100, 108, 255, 0.1) 0%, transparent 70%);
-  padding-top: 80px; /* Account for fixed navigation */
+  background: radial-gradient(circle at center, rgba(34, 211, 238, 0.1) 0%, transparent 70%);
+  padding-top: 80px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+[data-theme="light"] .hero {
+  background: radial-gradient(circle at center, rgba(8, 145, 178, 0.1) 0%, transparent 70%);
+}
+
+.hero-spline-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.6;
+  pointer-events: auto; /* Enable interaction */
+}
+
+.hero-spline {
+  width: 100%;
+  height: 100%;
+  pointer-events: auto; /* Enable interaction */
+}
+
+.spline-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, rgba(34, 211, 238, 0.05) 0%, transparent 70%);
+  border: 2px dashed var(--border-primary);
+  border-radius: 12px;
+}
+
+.placeholder-content {
+  text-align: center;
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.placeholder-content p {
+  margin: 0.5rem 0;
+}
+
+.placeholder-note {
+  font-size: 0.9rem;
+  opacity: 0.8;
 }
 
 .hero-content {
   max-width: 1000px;
   padding: 0 2rem;
-  z-index: 5;
+  z-index: 10; /* Increased to stay above Spline */
+  position: relative;
+  pointer-events: none; /* Disable on container */
+}
+
+.hero-content > * {
+  pointer-events: auto; /* Re-enable on children */
 }
 
 .hero-title {
   font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 700;
   margin-bottom: 1rem;
-  background: linear-gradient(45deg, #646cff, #61dafb);
+  background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -83,13 +139,14 @@
   font-size: clamp(1.2rem, 3vw, 1.8rem);
   margin-bottom: 1rem;
   opacity: 0.9;
+  color: var(--accent-primary);
 }
 
 .hero-description {
   font-size: clamp(1rem, 2vw, 1.2rem);
   margin-bottom: 3rem;
   opacity: 0.8;
-  color: #61dafb;
+  color: var(--text-secondary);
 }
 
 .hero-cta {
@@ -112,24 +169,27 @@
 }
 
 .cta-button.primary {
-  background: linear-gradient(45deg, #646cff, #61dafb);
+  background: var(--gradient-primary);
   color: white;
+  border: none;
+  box-shadow: var(--shadow-md);
 }
 
 .cta-button.primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(100, 108, 255, 0.4);
+  box-shadow: var(--shadow-lg);
 }
 
 .cta-button.secondary {
   background: transparent;
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: var(--accent-primary);
+  border: 2px solid var(--accent-primary);
 }
 
 .cta-button.secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.6);
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  box-shadow: var(--shadow-md);
 }
 
 .container {

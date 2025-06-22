@@ -2,37 +2,101 @@ import { useState, useEffect } from 'react';
 import { asciiArtTexts } from '../data/asciiArt';
 import './Terminal.css';
 
-const Terminal = () => {
+const Terminal = ({ audioTime = 0 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [hasStarted, setHasStarted] = useState(false);
+  const [cycleCount, setCycleCount] = useState(0);
+  const [isDestroying, setIsDestroying] = useState(false);
+  const [shouldDestroy, setShouldDestroy] = useState(false);
 
+  // Start exactly 5 seconds after page load
   useEffect(() => {
-    // Initial 5-second delay
-    const initialDelay = setTimeout(() => {
+    const startTime = setTimeout(() => {
       setHasStarted(true);
-    }, 6000);
+      console.log('ASCII animations started at 5 seconds');
+    }, 5000);
 
-    return () => clearTimeout(initialDelay);
+    return () => clearTimeout(startTime);
   }, []);
 
+  // Show all 15 arts within 5 seconds (333ms each)
   useEffect(() => {
-    if (!hasStarted) return;
+    if (!hasStarted || shouldDestroy) return;
 
     const interval = setInterval(() => {
       setIsVisible(false);
       
       setTimeout(() => {
-        setCurrentIndex((prevIndex) => 
-          (prevIndex + 1) % asciiArtTexts.length
-        );
+        setCurrentIndex((prevIndex) => {
+          const newIndex = (prevIndex + 1) % asciiArtTexts.length;
+          
+          // If we've completed a full cycle (back to index 0)
+          if (newIndex === 0 && prevIndex === asciiArtTexts.length - 1) {
+            setCycleCount(prev => {
+              const newCount = prev + 1;
+              if (newCount === 1) {
+                // After first complete cycle, trigger destruction
+                setTimeout(() => setShouldDestroy(true), 10);
+              }
+              return newCount;
+            });
+          }
+          
+          return newIndex;
+        });
         setIsVisible(true);
-      }, 150); // Half of transition time for smooth fade
+      }, 50);
       
-    }, 333); // 1/3 second = 333ms
+    }, 333);
 
     return () => clearInterval(interval);
-  }, [hasStarted]);
+  }, [hasStarted, shouldDestroy]);
+
+  // Handle destruction animation
+  useEffect(() => {
+    if (shouldDestroy && !isDestroying) {
+      setIsDestroying(true);
+      console.log('Starting terminal destruction...');
+    }
+  }, [shouldDestroy, isDestroying]);
+
+  if (shouldDestroy) {
+    return (
+      <div className={`terminal ${isDestroying ? 'destroying' : ''}`}>
+        <div className="terminal-header">
+          <div className="terminal-buttons">
+            <span className="btn close glitching"></span>
+            <span className="btn minimize glitching"></span>
+            <span className="btn maximize glitching"></span>
+          </div>
+          <div className="terminal-title glitching">terminal</div>
+        </div>
+        <div className="terminal-body">
+          <div className="terminal-prompt glitching">
+            <span className="prompt-user">aviral@portfolio</span>
+            <span className="prompt-symbol">:~$</span>
+            <span className="prompt-command">cat ascii_art.txt</span>
+          </div>
+          <div className="ascii-display glitching">
+            <pre className="destruction-text">
+              {`SYSTEM ERROR: MEMORY CORRUPTION DETECTED
+ACCESS VIOLATION AT 0x0xFF
+STACK OVERFLOW
+SEGMENTATION FAULT
+[CRITICAL] TERMINAL PROCESS TERMINATED
+CONNECTION LOST...`}
+            </pre>
+          </div>
+          <div className="terminal-cursor glitching">_</div>
+          
+          {/* Destruction effects */}
+          <div className="glitch-overlay"></div>
+          <div className="static-overlay"></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="terminal">
@@ -56,6 +120,11 @@ const Terminal = () => {
           <pre>{asciiArtTexts[currentIndex]}</pre>
         </div>
         <div className="terminal-cursor">_</div>
+        
+        {/* Debug info */}
+        <div className="debug-info">
+          Art: {currentIndex + 1}/15 | Cycles: {cycleCount} | Destroying: {shouldDestroy ? 'Yes' : 'No'}
+        </div>
       </div>
     </div>
   );

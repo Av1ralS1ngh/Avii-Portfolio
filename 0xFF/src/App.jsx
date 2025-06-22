@@ -1,6 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { ThemeProvider } from './context/ThemeContext'
 import AudioPlayer from './components/AudioPlayer'
 import Terminal from './components/Terminal'
+import SplineViewer from './components/SplineViewer'
+import ThemeToggle from './components/ThemeToggle'
 
 import SoundPermissionModal from './components/SoundPermissionModal'
 import Navigation from './components/Navigation'
@@ -15,24 +18,44 @@ function App() {
   const [hasPermission, setHasPermission] = useState(false);
   const [allowSound, setAllowSound] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [audioTime, setAudioTime] = useState(0);
+  const [terminalDestroyed, setTerminalDestroyed] = useState(false);
 
   const handlePermissionGranted = (soundChoice) => {
     setAllowSound(soundChoice);
     setHasPermission(true);
   };
 
+  const handleAudioTimeUpdate = (time) => {
+    setAudioTime(time);
+  };
+
+  useEffect(() => {
+    const handleTerminalDestroyed = () => {
+      setTimeout(() => {
+        setTerminalDestroyed(true);
+      }, 4000); // 3s destroy animation + 1s delay
+    };
+
+    const destroyCheckTimer = setTimeout(handleTerminalDestroyed, 10000);
+
+    return () => clearTimeout(destroyCheckTimer);
+  }, [hasPermission]);
+
   return (
-    <>
+    <ThemeProvider>
       {!hasPermission && (
         <SoundPermissionModal onPermissionGranted={handlePermissionGranted} />
       )}
       
       {hasPermission && (
         <>
+          <ThemeToggle />
           <AudioPlayer 
             src="/music/background.mp3" 
             shouldPlay={allowSound}
             isActive={hasPermission}
+            onTimeUpdate={handleAudioTimeUpdate}
           />
           
           <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
@@ -40,20 +63,30 @@ function App() {
           <main className="portfolio">
             {activeSection === 'home' && (
               <section className="hero">
-                <Terminal isActive={hasPermission} />
-                <div className="hero-content">
-                  <h1 className="hero-title">Aviral Singh</h1>
-                  <p className="hero-subtitle">Blockchain Developer & Web3 Innovator</p>
-                  <p className="hero-description">B.Tech Metallurgy & Materials Engineering, IIT Roorkee</p>
-                  <div className="hero-cta">
-                    <button className="cta-button primary" onClick={() => setActiveSection('projects')}>
-                      View My Work
-                    </button>
-                    <button className="cta-button secondary" onClick={() => setActiveSection('contact')}>
-                      Get In Touch
-                    </button>
-                  </div>
+                {!terminalDestroyed && <Terminal />}
+                
+                <div className="hero-spline-bg">
+                  <SplineViewer 
+                    splineUrl="https://prod.spline.design/p3LbqIw4TPUL3IWc/scene.splinecode"
+                    className="hero-spline"
+                  />
                 </div>
+                
+                {terminalDestroyed && (
+                  <div className="hero-content">
+                    <h1 className="hero-title">Aviral Singh</h1>
+                    <p className="hero-subtitle">Blockchain Developer & Web3 Innovator</p>
+                    <p className="hero-description">B.Tech Metallurgy & Materials Engineering, IIT Roorkee</p>
+                    <div className="hero-cta">
+                      <button className="cta-button primary" onClick={() => setActiveSection('projects')}>
+                        View My Work
+                      </button>
+                      <button className="cta-button secondary" onClick={() => setActiveSection('contact')}>
+                        Get In Touch
+                      </button>
+                    </div>
+                  </div>
+                )}
               </section>
             )}
 
@@ -65,7 +98,7 @@ function App() {
           </main>
         </>
       )}
-    </>
+    </ThemeProvider>
   )
 }
 
