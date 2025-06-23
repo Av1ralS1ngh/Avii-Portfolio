@@ -1,0 +1,137 @@
+.spline-loader {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, rgba(34, 211, 238, 0.05) 0%, transparent 70%);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.loader-content {
+  text-align: center;
+  z-index: 2;
+}
+
+.loader-spinner {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+}
+
+.spinner-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+}
+
+.spinner-ring:nth-child(1) {
+  border-top-color: #22d3ee;
+  animation-delay: 0s;
+}
+
+.spinner-ring:nth-child(2) {
+  border-right-color: #3b82f6;
+  animation-delay: 0.3s;
+  width: 70%;
+  height: 70%;
+  top: 15%;
+  left: 15%;
+}
+
+.spinner-ring:nth-child(3) {
+  border-bottom-color: #8b5cf6;
+  animation-delay: 0.6s;
+  width: 40%;
+  height: 40%;
+  top: 30%;
+  left: 30%;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader-text {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.loader-progress {
+  width: 200px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #22d3ee, #3b82f6, #8b5cf6);
+  border-radius: 2px;
+  animation: progress 3s ease-in-out infinite;
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+    transform: translateX(-100%);
+  }
+  50% {
+    width: 70%;
+    transform: translateX(0%);
+  }
+  100% {
+    width: 100%;
+    transform: translateX(100%);
+  }
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .spline-loader {
+  background: radial-gradient(circle at center, rgba(34, 211, 238, 0.08) 0%, transparent 70%);
+}
+
+/* Light theme adjustments */
+[data-theme="light"] .spline-loader {
+  background: radial-gradient(circle at center, rgba(8, 145, 178, 0.08) 0%, transparent 70%);
+}
+
+[data-theme="light"] .loader-text {
+  color: #475569;
+}
+
+[data-theme="light"] .loader-progress {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .loader-spinner {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .loader-text {
+    font-size: 0.9rem;
+  }
+  
+  .loader-progress {
+    width: 150px;
+  }
+}

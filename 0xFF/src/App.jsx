@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
-import { ThemeProvider } from './context/ThemeContext'
+import { ThemeProvider, useTheme } from './context/ThemeContext'
 import AudioPlayer from './components/AudioPlayer'
 import Terminal from './components/Terminal'
-import SplineViewer from './components/SplineViewer'
 import ThemeToggle from './components/ThemeToggle'
 
 import SoundPermissionModal from './components/SoundPermissionModal'
@@ -14,12 +13,13 @@ import Achievements from './components/Achievements'
 import Contact from './components/Contact'
 import './App.css'
 
-function App() {
+function AppContent() {
   const [hasPermission, setHasPermission] = useState(false);
   const [allowSound, setAllowSound] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [audioTime, setAudioTime] = useState(0);
   const [terminalDestroyed, setTerminalDestroyed] = useState(false);
+  const { isDark } = useTheme();
 
   const handlePermissionGranted = (soundChoice) => {
     setAllowSound(soundChoice);
@@ -37,13 +37,13 @@ function App() {
       }, 4000); // 3s destroy animation + 1s delay
     };
 
-    const destroyCheckTimer = setTimeout(handleTerminalDestroyed, 10000);
+    const destroyCheckTimer = setTimeout(handleTerminalDestroyed, 5000); // Changed from 10000 to 5000
 
     return () => clearTimeout(destroyCheckTimer);
   }, [hasPermission]);
 
   return (
-    <ThemeProvider>
+    <>
       {!hasPermission && (
         <SoundPermissionModal onPermissionGranted={handlePermissionGranted} />
       )}
@@ -65,15 +65,11 @@ function App() {
               <section className="hero">
                 {!terminalDestroyed && <Terminal />}
                 
-                <div className="hero-spline-bg">
-                  <SplineViewer className="hero-spline" />
-                </div>
-                
                 {terminalDestroyed && (
                   <div className="hero-content">
                     <h1 className="hero-title">Aviral Singh</h1>
                     <p className="hero-subtitle">Blockchain Developer & Web3 Innovator</p>
-                    <p className="hero-description">B.Tech Metallurgy & Materials Engineering, IIT Roorkee</p>
+                    <p className="hero-description">B.Tech 3rd year, IIT Roorkee</p>
                     <div className="hero-cta">
                       <button className="cta-button primary" onClick={() => setActiveSection('projects')}>
                         View My Work
@@ -84,6 +80,26 @@ function App() {
                     </div>
                   </div>
                 )}
+                
+                <div className="developer-image">
+                  <img 
+                    src={isDark ? "/developer-image1.svg" : "/developer-image2.svg"} 
+                    alt="Developer illustration" 
+                    className="dev-img" 
+                  />
+                </div>
+                
+                <div className="hero-footer">
+                  <div className="footer-content">
+                    <span className="made-with">Made with 🩵</span>
+                    <span className="divider">|</span>
+                    <span className="powered-by">
+                      Powered by 
+                      <img src="/vite.svg" className="vite-logo" />
+                      Ethereum
+                    </span>
+                  </div>
+                </div>
               </section>
             )}
 
@@ -95,6 +111,14 @@ function App() {
           </main>
         </>
       )}
+    </>
+  )
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
     </ThemeProvider>
   )
 }

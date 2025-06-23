@@ -66,7 +66,7 @@ const Navigation = ({ activeSection, setActiveSection }) => {
           </button>
           
           <div className="nav-brand">
-            Aviral Singh
+            0xFaucetFailure
           </div>
           
           <div className="nav-items">

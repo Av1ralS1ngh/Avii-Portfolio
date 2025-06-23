@@ -137,49 +137,7 @@
 
 /* Destruction Animation Styles */
 .terminal.destroying {
-  animation: terminalDestroy 3s ease-in-out forwards;
-}
-
-.glitching {
-  animation: glitch 0.3s infinite;
-}
-
-.glitch-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent,
-    transparent 2px,
-    rgba(255, 0, 0, 0.1) 2px,
-    rgba(255, 0, 0, 0.1) 4px
-  );
-  animation: scanlines 0.1s infinite;
-  pointer-events: none;
-}
-
-.static-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(120, 119, 240, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 119, 119, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(120, 119, 240, 0.3) 0%, transparent 50%);
-  animation: staticNoise 0.15s infinite;
-  pointer-events: none;
-}
-
-.destruction-text {
-  color: #ff0000 !important;
-  text-shadow: 0 0 10px rgba(255, 0, 0, 0.8) !important;
-  font-weight: bold;
-  animation: errorFlicker 0.2s infinite;
+  animation: terminalFadeOut 2s ease-out forwards;
 }
 
 @keyframes greenBlink {
@@ -214,95 +172,14 @@
   }
 }
 
-@keyframes terminalDestroy {
+@keyframes terminalFadeOut {
   0% {
     transform: translateX(-50%) scale(1);
     opacity: 1;
-    filter: blur(0px) hue-rotate(0deg);
-  }
-  20% {
-    transform: translateX(-50%) scale(1.02);
-    opacity: 0.9;
-    filter: blur(1px) hue-rotate(90deg);
-  }
-  40% {
-    transform: translateX(-50%) scale(0.98);
-    opacity: 0.7;
-    filter: blur(2px) hue-rotate(180deg);
-  }
-  60% {
-    transform: translateX(-50%) scale(1.05);
-    opacity: 0.5;
-    filter: blur(4px) hue-rotate(270deg);
-  }
-  80% {
-    transform: translateX(-50%) scale(0.95);
-    opacity: 0.3;
-    filter: blur(8px) hue-rotate(360deg);
-  }
-  90% {
-    transform: translateX(-50%) scale(0.1);
-    opacity: 0.1;
-    filter: blur(20px);
   }
   100% {
-    transform: translateX(-50%) scale(0);
+    transform: translateX(-50%) scale(1);
     opacity: 0;
-    filter: blur(50px);
-  }
-}
-
-@keyframes glitch {
-  0%, 100% {
-    transform: translate(0);
-    filter: hue-rotate(0deg);
-  }
-  20% {
-    transform: translate(-2px, 2px);
-    filter: hue-rotate(90deg);
-  }
-  40% {
-    transform: translate(-2px, -2px);
-    filter: hue-rotate(180deg);
-  }
-  60% {
-    transform: translate(2px, 2px);
-    filter: hue-rotate(270deg);
-  }
-  80% {
-    transform: translate(2px, -2px);
-    filter: hue-rotate(360deg);
-  }
-}
-
-@keyframes scanlines {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(4px);
-  }
-}
-
-@keyframes staticNoise {
-  0%, 100% {
-    opacity: 0.8;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.4;
-    transform: scale(1.01);
-  }
-}
-
-@keyframes errorFlicker {
-  0%, 100% {
-    opacity: 1;
-    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
-  }
-  50% {
-    opacity: 0.7;
-    text-shadow: 0 0 20px rgba(255, 0, 0, 1), 0 0 30px rgba(255, 255, 255, 0.5);
   }
 }
 

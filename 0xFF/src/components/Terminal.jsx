@@ -15,7 +15,7 @@ const Terminal = ({ audioTime = 0 }) => {
     const startTime = setTimeout(() => {
       setHasStarted(true);
       console.log('ASCII animations started at 5 seconds');
-    }, 5000);
+    },);
 
     return () => clearTimeout(startTime);
   }, []);
@@ -66,33 +66,24 @@ const Terminal = ({ audioTime = 0 }) => {
       <div className={`terminal ${isDestroying ? 'destroying' : ''}`}>
         <div className="terminal-header">
           <div className="terminal-buttons">
-            <span className="btn close glitching"></span>
-            <span className="btn minimize glitching"></span>
-            <span className="btn maximize glitching"></span>
+            <span className="btn close"></span>
+            <span className="btn minimize"></span>
+            <span className="btn maximize"></span>
           </div>
-          <div className="terminal-title glitching">terminal</div>
+          <div className="terminal-title">terminal</div>
         </div>
         <div className="terminal-body">
-          <div className="terminal-prompt glitching">
+          <div className="terminal-prompt">
             <span className="prompt-user">aviral@portfolio</span>
             <span className="prompt-symbol">:~$</span>
             <span className="prompt-command">cat ascii_art.txt</span>
           </div>
-          <div className="ascii-display glitching">
-            <pre className="destruction-text">
-              {`SYSTEM ERROR: MEMORY CORRUPTION DETECTED
-ACCESS VIOLATION AT 0x0xFF
-STACK OVERFLOW
-SEGMENTATION FAULT
-[CRITICAL] TERMINAL PROCESS TERMINATED
-CONNECTION LOST...`}
-            </pre>
+          <div 
+            className={`ascii-display ${isVisible ? 'visible' : 'hidden'}`}
+          >
+            <pre>{asciiArtTexts[currentIndex]}</pre>
           </div>
-          <div className="terminal-cursor glitching">_</div>
-          
-          {/* Destruction effects */}
-          <div className="glitch-overlay"></div>
-          <div className="static-overlay"></div>
+          <div className="terminal-cursor">_</div>
         </div>
       </div>
     );

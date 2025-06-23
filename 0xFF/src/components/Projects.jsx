@@ -8,7 +8,6 @@ const Projects = () => {
       category: "Blockchain Gaming Platform",
       description: "A next-generation blockchain gaming ecosystem that seamlessly integrates multiple ERC standards with cross-chain functionality. Features advanced smart contract architecture enabling secure, scalable gaming experiences with true digital asset ownership.",
       technologies: ["Solidity", "React", "Web3.js", "IPFS"],
-      icon: "🎮",
       links: {
         github: "https://github.com/aviralsingh611/velmora",
         demo: "https://youtu.be/velmora-demo"
@@ -20,7 +19,6 @@ const Projects = () => {
       category: "AI-Powered DeFi Platform",
       description: "Revolutionary AI-guided DeFi learning platform featuring real-time market simulations and interactive smart contract tutorials. Winner of the prestigious Coinbase Pool Prize at Agentic Ethereum hackathon.",
       technologies: ["AI/ML", "Solidity", "React", "Python"],
-      icon: "🥋",
       links: {
         github: "https://github.com/aviralsingh611/defi-dojo",
         demo: "https://youtu.be/defi-dojo-demo"
@@ -32,7 +30,6 @@ const Projects = () => {
       category: "Decentralized Finance Tool",
       description: "Enterprise-grade decentralized invoicing system built specifically for freelancers and gig economy workers. Provides transparent, automated payment solutions with dispute resolution mechanisms on the blockchain.",
       technologies: ["Solidity", "Next.js", "Ethers.js", "IPFS"],
-      icon: "📄",
       links: {
         github: "https://github.com/aviralsingh611/secure-invoice",
         demo: "https://youtu.be/secure-invoice-demo"
@@ -44,7 +41,6 @@ const Projects = () => {
       category: "Telegram DeFi Integration",
       description: "Groundbreaking Telegram Mini App that brings decentralized finance directly into messaging platforms. Features intuitive UX design with enterprise-level blockchain security for seamless crypto trading.",
       technologies: ["Telegram Bot API", "Solidity", "Node.js", "Web3"],
-      icon: "💬",
       links: {
         github: "https://github.com/aviralsingh611/swiish",
         demo: "https://youtu.be/swiish-demo"
@@ -54,10 +50,6 @@ const Projects = () => {
 
   const renderProjectCard = (project) => (
     <article key={project.id} className="project-card" aria-labelledby={`project-${project.id}-title`}>
-      <div className="project-icon" aria-hidden="true">
-        {project.icon}
-      </div>
-      
       <div className="project-content">
         <header className="project-header">
           <h3 id={`project-${project.id}-title`} className="project-title">
@@ -89,7 +81,6 @@ const Projects = () => {
             className="project-link project-link--code"
             aria-label={`View ${project.title} source code`}
           >
-            <span className="link-icon" aria-hidden="true">💻</span>
             <span>Source Code</span>
           </a>
           <a 
@@ -99,7 +90,6 @@ const Projects = () => {
             className="project-link project-link--demo"
             aria-label={`Watch ${project.title} demo video`}
           >
-            <span className="link-icon" aria-hidden="true">🎥</span>
             <span>Live Demo</span>
           </a>
         </nav>

@@ -42,7 +42,7 @@ const Achievements = () => {
       type: "Track Winner",
       description: "Won the prestigious 100xDevs track at SyntaxError 2024, demonstrating excellence in full-stack blockchain development.",
       year: "2024",
-      icon: "💯"
+      icon: "🥇"
     },
     {
       title: "Multiple Placements - StackTooDeep v2.0",
