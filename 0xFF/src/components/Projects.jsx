@@ -9,8 +9,8 @@ const Projects = () => {
       description: "A next-generation blockchain gaming ecosystem that seamlessly integrates multiple ERC standards with cross-chain functionality. Features advanced smart contract architecture enabling secure, scalable gaming experiences with true digital asset ownership.",
       technologies: ["Solidity", "React", "Web3.js", "IPFS"],
       links: {
-        github: "https://github.com/aviralsingh611/velmora",
-        demo: "https://youtu.be/velmora-demo"
+        github: "https://github.com/Av1ralS1ngh/Velmora",
+        demo: "https://vimeo.com/1059494943/68338b1ab5"
       }
     },
     {
@@ -20,8 +20,8 @@ const Projects = () => {
       description: "Revolutionary AI-guided DeFi learning platform featuring real-time market simulations and interactive smart contract tutorials. Winner of the prestigious Coinbase Pool Prize at Agentic Ethereum hackathon.",
       technologies: ["AI/ML", "Solidity", "React", "Python"],
       links: {
-        github: "https://github.com/aviralsingh611/defi-dojo",
-        demo: "https://youtu.be/defi-dojo-demo"
+        github: "https://github.com/arnavkirti/DeFi-Dojo",
+        demo: "https://vimeo.com/1054981792?share=copy"
       }
     },
     {
@@ -31,8 +31,8 @@ const Projects = () => {
       description: "Enterprise-grade decentralized invoicing system built specifically for freelancers and gig economy workers. Provides transparent, automated payment solutions with dispute resolution mechanisms on the blockchain.",
       technologies: ["Solidity", "Next.js", "Ethers.js", "IPFS"],
       links: {
-        github: "https://github.com/aviralsingh611/secure-invoice",
-        demo: "https://youtu.be/secure-invoice-demo"
+        github: "https://github.com/arsh0429/Bit-by-Bit",
+        demo: "https://vimeo.com/1059230800?share=copy"
       }
     },
     {
@@ -42,8 +42,8 @@ const Projects = () => {
       description: "Groundbreaking Telegram Mini App that brings decentralized finance directly into messaging platforms. Features intuitive UX design with enterprise-level blockchain security for seamless crypto trading.",
       technologies: ["Telegram Bot API", "Solidity", "Node.js", "Web3"],
       links: {
-        github: "https://github.com/aviralsingh611/swiish",
-        demo: "https://youtu.be/swiish-demo"
+        github: "https://github.com/amsorrytola/SWIISH",
+        demo: "https://vimeo.com/1089609955/f3048fb5af?ts=15827&share=copy"
       }
     }
   ];
@@ -90,7 +90,7 @@ const Projects = () => {
             className="project-link project-link--demo"
             aria-label={`Watch ${project.title} demo video`}
           >
-            <span>Live Demo</span>
+            <span>Video Demo</span>
           </a>
         </nav>
       </div>

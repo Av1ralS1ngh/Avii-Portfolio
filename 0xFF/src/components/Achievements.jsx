@@ -20,7 +20,7 @@ const Achievements = () => {
       title: "Coinbase Pool Prize - Agentic Ethereum",
       type: "Recognition",
       description: "Won Coinbase Pool Prize for Defi-Dojo, an AI-guided DeFi learning platform with real-time simulations and smart contract interactions.",
-      year: "2024",
+      year: "2025",
       icon: "🪙"
     },
     {
@@ -34,7 +34,7 @@ const Achievements = () => {
       title: "Winner - Hathor Hackathon",
       type: "Competition",
       description: "Won Hathor Hackathon with SWIISH - a Telegram Mini App bringing DeFi directly into Telegram with intuitive UX and blockchain security.",
-      year: "2024",
+      year: "2025",
       icon: "🎯"
     },
     {
@@ -48,7 +48,7 @@ const Achievements = () => {
       title: "Multiple Placements - StackTooDeep v2.0",
       type: "Competition",
       description: "Achieved 2nd place in UniDAO track and 3rd place in Open Track, showcasing versatility across different blockchain domains.",
-      year: "2024",
+      year: "2025",
       icon: "🏅"
     },
     {
@@ -62,14 +62,28 @@ const Achievements = () => {
       title: "BuildGuild Batch 15 Selection",
       type: "Selection",
       description: "Selected as a builder in BuildGuild Batch 15, joining an elite community of blockchain developers and innovators.",
-      year: "2024",
+      year: "2025",
       icon: "🏗️"
     },
     {
-      title: "Turbin3 Q2 2024 Cohort",
+      title: "PLDG Cohort Selection",
+      type: "Selection",
+      description: "Selected amongst the top 10% applicants for the prestigious PLDG (Protocol Labs Dev Guild) Cohort. Focused on advanced Web3 development, Filecoin ecosystem, IPFS protocols, and distributed storage solutions with industry-leading mentorship.",
+      year: "2025",
+      icon: "🌐"
+    },
+    {
+      title: "UniDAO 2.0 Cohort",
+      type: "Selection",
+      description: "Accepted into the exclusive UniDAO 2.0 Cohort, a premier Web3 education and builder program. Gained deep insights into DeFi protocols, DAO governance structures, and decentralized finance mechanisms through hands-on projects and mentorship.",
+      year: "2025",
+      icon: "🎓"
+    },
+    {
+      title: "Turbin3 Q2 2025 Cohort",
       type: "Selection",
       description: "Selected for the prestigious Turbin3 Q2 2024 Cohort, advancing Rust and Solana development skills with industry experts.",
-      year: "2024",
+      year: "2025",
       icon: "🚀"
     }
   ];
@@ -108,11 +122,11 @@ const Achievements = () => {
             <div className="summary-label">First Place Victories</div>
           </div>
           <div className="summary-item">
-            <div className="summary-number">2</div>
+            <div className="summary-number">4</div>
             <div className="summary-label">Elite Program Selections</div>
           </div>
           <div className="summary-item">
-            <div className="summary-number">6+</div>
+            <div className="summary-number">8+</div>
             <div className="summary-label">Blockchain Technologies</div>
           </div>
         </div>

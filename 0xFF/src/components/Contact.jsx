@@ -70,7 +70,7 @@ const Contact = () => {
         
         <div className="contact-content">
           <div className="contact-intro">
-            <h2>Ready to collaborate? 🚀</h2>
+            <h2>Ready to collaborate?</h2>
             <p>
               I'm always open to discussing new opportunities, innovative projects, 
               and exciting collaborations in the Web3 space. Whether you're looking 

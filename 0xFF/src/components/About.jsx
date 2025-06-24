@@ -14,16 +14,13 @@ const About = () => {
             <div className="about-text">
               <h2>Hello! I'm Aviral Singh 👋</h2>
               <p>
-                I'm a B.Tech student in Metallurgy & Materials Engineering at IIT Roorkee, 
+                I'm a B.Tech student at IIT Roorkee, 
                 but my true passion lies in the revolutionary world of blockchain and Web3 technology. 
                 What started as curiosity about decentralized systems has evolved into a deep expertise 
                 in building innovative DeFi protocols, smart contracts, and blockchain applications.
               </p>
               <p>
-                My journey in Web3 began with understanding the fundamentals of Ethereum and Solidity, 
-                and quickly expanded to mastering advanced concepts like cross-chain protocols, 
-                yield farming mechanisms, and decentralized governance systems. I've had the privilege 
-                of working on cutting-edge projects that push the boundaries of what's possible in DeFi.
+                My journey in Web3 began with learning the fundamentals of blockchain technology through Grokking Bitcoin and our college club BlocSoc IITR, where I first discovered the transformative potential of decentralized systems. From understanding basic Ethereum concepts and Solidity programming, I quickly expanded to mastering advanced topics like cross-chain protocols, yield farming mechanisms, and decentralized governance systems. I've had the privilege of working on cutting-edge projects that push the boundaries of what's possible in DeFi.
               </p>
               <p>
                 When I'm not coding smart contracts or designing tokenomics, you'll find me exploring 

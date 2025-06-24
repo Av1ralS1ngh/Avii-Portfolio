@@ -19,6 +19,7 @@ function AppContent() {
   const [activeSection, setActiveSection] = useState('home');
   const [audioTime, setAudioTime] = useState(0);
   const [terminalDestroyed, setTerminalDestroyed] = useState(false);
+  const [imageToggle, setImageToggle] = useState(false);
   const { isDark } = useTheme();
 
   const handlePermissionGranted = (soundChoice) => {
@@ -41,6 +42,23 @@ function AppContent() {
 
     return () => clearTimeout(destroyCheckTimer);
   }, [hasPermission]);
+
+  // Toggle between images every 3 seconds
+  useEffect(() => {
+    const imageToggleTimer = setInterval(() => {
+      setImageToggle(prev => !prev);
+    }, 650);
+
+    return () => clearInterval(imageToggleTimer);
+  }, []);
+
+  const getDeveloperImage = () => {
+    if (isDark) {
+      return imageToggle ? "/developer-image10.svg" : "/developer-image1.svg";
+    } else {
+      return imageToggle ? "/developer-image20.svg" : "/developer-image2.svg";
+    }
+  };
 
   return (
     <>
@@ -83,7 +101,7 @@ function AppContent() {
                 
                 <div className="developer-image">
                   <img 
-                    src={isDark ? "/developer-image1.svg" : "/developer-image2.svg"} 
+                    src={getDeveloperImage()} 
                     alt="Developer illustration" 
                     className="dev-img" 
                   />

@@ -74,9 +74,9 @@
 }
 
 .dev-img {
-  width: 125px;
+  width: 100px;
   height: auto;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+  transition: opacity 0.5s ease-in-out;
 }
 
 .footer-content {
