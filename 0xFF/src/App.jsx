@@ -38,7 +38,7 @@ function AppContent() {
       }, 4000); // 3s destroy animation + 1s delay
     };
 
-    const destroyCheckTimer = setTimeout(handleTerminalDestroyed, 5000); // Changed from 10000 to 5000
+    const destroyCheckTimer = setTimeout(handleTerminalDestroyed, 5000); // Changed from 5000 to 4000 (1 second earlier)
 
     return () => clearTimeout(destroyCheckTimer);
   }, [hasPermission]);

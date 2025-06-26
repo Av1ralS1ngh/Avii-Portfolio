@@ -92,6 +92,36 @@
 .contact-icon {
   font-size: 1.8rem;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-icon-img {
+  width: 32px;  /* Increased from 24px */
+  height: 32px; /* Increased from 24px */
+  object-fit: contain;
+}
+
+/* Individual icon size adjustments */
+.contact-card:nth-child(3) .contact-icon-img { /* GitHub */
+  width: 34px;
+  height: 34px;
+}
+
+.contact-card:nth-child(4) .contact-icon-img { /* LinkedIn */
+  width: 34px;
+  height: 34px;
+}
+
+.contact-card:nth-child(5) .contact-icon-img { /* Twitter */
+  width: 30px;
+  height: 30px;
+}
+
+.contact-card:nth-child(7) .contact-icon-img { /* Telegram */
+  width: 34px;
+  height: 34px;
 }
 
 .contact-info {

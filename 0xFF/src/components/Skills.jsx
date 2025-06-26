@@ -14,34 +14,34 @@ const Skills = () => {
   const skillsData = [
     {
       category: "Blockchain & Web3",
-      icon: "⛓️",
+      icon: "",
       skills: [
-        { name: "Solidity", percentage: 95 },
-        { name: "Yul", percentage: 80 },
-        { name: "Cairo", percentage: 75 },
-        { name: "EVM Development", percentage: 90 },
-        { name: "LayerZero Protocol", percentage: 85 },
-        { name: "Chainlink VRF", percentage: 88 }
+        { name: "Solidity", percentage: 80 },
+        { name: "Yul", percentage: 65 },
+        { name: "Cairo", percentage: 55 },
+        { name: "EVM Development", percentage: 80 },
+        { name: "LayerZero Protocol", percentage: 75 },
+        { name: "Chainlink VRF", percentage: 100 }
       ]
     },
     {
       category: "Languages & Frameworks",
-      icon: "💻",
+      icon: "",
       skills: [
         { name: "TypeScript", percentage: 90 },
-        { name: "Rust", percentage: 78 },
-        { name: "Python", percentage: 85 },
+        { name: "Rust", percentage: 60 },
+        { name: "Privy Wallet", percentage: 85 },
         { name: "React", percentage: 92 },
-        { name: "HTML/CSS", percentage: 90 },
+        { name: "HTML/CSS", percentage: 100 },
         { name: "RestAPIs", percentage: 88 }
       ]
     },
     {
       category: "Development Tools",
-      icon: "🔧",
+      icon: "",
       skills: [
         { name: "Foundry", percentage: 92 },
-        { name: "Hardhat", percentage: 90 },
+        { name: "Remix IDE", percentage: 100 },
         { name: "The Graph Protocol", percentage: 82 },
         { name: "Web Sockets", percentage: 80 },
         { name: "Git/GitHub", percentage: 95 },
@@ -50,10 +50,10 @@ const Skills = () => {
     },
     {
       category: "Blockchain Standards",
-      icon: "📜",
+      icon: "",
       skills: [
-        { name: "ERC-20 Tokens", percentage: 95 },
-        { name: "ERC-721 NFTs", percentage: 92 },
+        { name: "ERC-20/ERC-721 ", percentage: 95 },
+        { name: "ERC-4337", percentage: 92 },
         { name: "Soulbound Tokens", percentage: 85 },
         { name: "Dynamic NFTs", percentage: 88 },
         { name: "Cross-chain Protocols", percentage: 82 },

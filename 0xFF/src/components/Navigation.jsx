@@ -5,12 +5,12 @@ const Navigation = ({ activeSection, setActiveSection }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { id: 'home', label: 'Home', icon: '🏠' },
-    { id: 'about', label: 'About', icon: '👨‍💻' },
-    { id: 'skills', label: 'Skills', icon: '⚡' },
-    { id: 'projects', label: 'Projects', icon: '🚀' },
-    { id: 'achievements', label: 'Achievements', icon: '🏆' },
-    { id: 'contact', label: 'Contact', icon: '📧' }
+    { id: 'home', label: 'Home', icon: '/vite.svg' },
+    { id: 'about', label: 'About', icon: '/vite.svg' },
+    { id: 'skills', label: 'Skills', icon: '/vite.svg' },
+    { id: 'projects', label: 'Projects', icon: '/vite.svg' },
+    { id: 'achievements', label: 'Achievements', icon: '/vite.svg' },
+    { id: 'contact', label: 'Contact', icon: '/vite.svg' }
   ];
 
   const handleSectionChange = (sectionId) => {
@@ -76,7 +76,7 @@ const Navigation = ({ activeSection, setActiveSection }) => {
                 className={`nav-item ${activeSection === item.id ? 'active' : ''}`}
                 onClick={() => handleSectionChange(item.id)}
               >
-                <span className="nav-icon">{item.icon}</span>
+                {item.icon && <img src={item.icon} alt="" className="nav-icon" />}
                 <span className="nav-label">{item.label}</span>
               </button>
             ))}
@@ -110,7 +110,7 @@ const Navigation = ({ activeSection, setActiveSection }) => {
               className={`mobile-nav-item ${activeSection === item.id ? 'active' : ''}`}
               onClick={() => handleSectionChange(item.id)}
             >
-              <span className="mobile-nav-icon">{item.icon}</span>
+              {item.icon && <img src={item.icon} alt="" className="mobile-nav-icon" />}
               <span className="mobile-nav-label">{item.label}</span>
             </button>
           ))}

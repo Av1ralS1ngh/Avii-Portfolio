@@ -12,7 +12,7 @@ const About = () => {
         <div className="about-content">
           <div className="about-main">
             <div className="about-text">
-              <h2>Hello! I'm Aviral Singh 👋</h2>
+              <h2>Hello! I'm Aviral Singh</h2>
               <p>
                 I'm a B.Tech student at IIT Roorkee, 
                 but my true passion lies in the revolutionary world of blockchain and Web3 technology. 

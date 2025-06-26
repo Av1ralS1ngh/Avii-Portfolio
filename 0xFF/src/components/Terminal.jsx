@@ -79,9 +79,9 @@ const Terminal = ({ audioTime = 0 }) => {
             <span className="prompt-command">cat ascii_art.txt</span>
           </div>
           <div 
-            className={`ascii-display ${isVisible ? 'visible' : 'hidden'}`}
+            className="ascii-display visible"
           >
-            <pre>{asciiArtTexts[currentIndex]}</pre>
+            <pre>{asciiArtTexts[asciiArtTexts.length - 1]}</pre>
           </div>
           <div className="terminal-cursor">_</div>
         </div>

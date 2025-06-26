@@ -20,44 +20,37 @@ const Contact = () => {
       platform: "GitHub",
       value: "Av1ralS1ngh",
       link: "https://github.com/Av1ralS1ngh",
-      icon: "💻",
+      iconFile: "/icons8-github.svg",
       color: "#333"
     },
     {
       platform: "LinkedIn",
       value: "aviral-singh-b854a6342",
       link: "https://www.linkedin.com/in/aviral-singh-b854a6342",
-      icon: "💼",
+      iconFile: "/icons8-linkedin.svg",
       color: "#0077b5"
     },
     {
       platform: "Twitter/X",
       value: "0xFaucetFailure",
       link: "https://x.com/0xFaucetFailure",
-      icon: "🐦",
+      iconFile: "/icons8-twitter.svg",
       color: "#1da1f2"
     },
     {
       platform: "Farcaster",
       value: "0xfaucetfailure",
       link: "https://warpcast.com/0xfaucetfailure",
-      icon: "🔮",
+      iconFile: "/file.svg",
       color: "#8b5cf6"
     },
     {
       platform: "Telegram",
       value: "Aviral02Singh",
       link: "https://t.me/Aviral02Singh",
-      icon: "✈️",
+      iconFile: "/icons8-telegram.svg",
       color: "#0088cc"
     },
-    {
-      platform: "IITR Email",
-      value: "aviral_s@mt.iitr.ac.in",
-      link: "mailto:aviral_s@mt.iitr.ac.in",
-      icon: "🎓",
-      color: "#ff6b6b"
-    }
   ];
 
   return (
@@ -103,7 +96,13 @@ const Contact = () => {
                 className="contact-card"
                 style={{ '--accent-color': contact.color }}
               >
-                <div className="contact-icon">{contact.icon}</div>
+                <div className="contact-icon">
+                  {contact.iconFile ? (
+                    <img src={contact.iconFile} alt={contact.platform} className="contact-icon-img" />
+                  ) : (
+                    contact.icon
+                  )}
+                </div>
                 <div className="contact-info">
                   <div className="contact-platform">{contact.platform}</div>
                   <div className="contact-value">{contact.value}</div>
